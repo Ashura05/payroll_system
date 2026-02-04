@@ -125,43 +125,112 @@ if ($is_day_end) {
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script> <!-- jQuery UI -->
 </head>
 <body>
-<div class="sidebar">
-    <a href=""><img alt="Company Logo" height="80" src="../img/letterLogo.png" width="80" /></a>
+<!-- ================= SIDEBAR ================= -->
+<aside class="sidebar" id="sidebar">
 
-    <ul>
-        <p>Reports</p>
-        <li><a href="../dashboard.php"><i class="fas fa-tachometer-alt"></i>Dashboard</a></li>
+    <!-- Sidebar Header -->
+    <div class="sidebar-header">
+        <a href="../dashboard.php" class="logo-box">
+            <img src="../img/letterLogo.png" alt="Company Logo" class="logo-img">
+            <span class="logo-text" src="./dashboard.php">LOURD'S Café</span>
+        </a>
 
-        <p>Employee Management</p>
-        <ul>
-            
-            <li style="background-color: #f3feff;
-                        border-radius: 7px 0px 0px 7px; 
-                        text-decoration: none;
-                        height: 27px;
-                        font-size: 18px;
-                        transition: color 0.3s ease; ">
-                <a href="Attendance.php" style=" color: black; transition: color 0.3s ease;"><i class="fa fa-laptop" aria-hidden="true"></i>Attendance</a></li>
-            <li><a href="employee-list.php"><i class="fa fa-users" aria-hidden="true"></i>Employee List</a></li>
-            <li><a href="inactive-employees.php"><i class="fa fa-user-times" aria-hidden="true"></i>Inactive Employees</a></li>
-            <li><a href="positions.php"><i class="fa fa-briefcase" aria-hidden="true"></i>Positions</a></li>
-        </ul>
+        <button class="toggle-btn" onclick="toggleSidebar()">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
 
-        <p>Time Management</p>
-        <ul>
-            <li><a href="schedule_management.php"><i class="fas fa-calendar-check"></i>Schedules</a></li>
-            <li><a href="employee-schedule.php"><i class="fa fa-address-book" aria-hidden="true"></i>Employee Schedule</a></li>
-        </ul>
+    <ul class="sidebar-menu">
 
-        <p>Payroll Management</p>
-        <li><a href="../PayManagement/payroll.php"><i class="fa fa-envelope" aria-hidden="true"></i>Payroll</a></li>
-        <li><a href="../PayManagement/cash-advance.php"><i class="fas fa-money-check-alt"></i>Cash Advance</a></li>
-        <li><a href="../PayManagement/overtime.php"><i class="fas fa-clock" aria-hidden="true"></i>Overtime</a></li>
-        <li><a href="../PayManagement/taxDeduction.php"><i class="fa fa-minus-square" aria-hidden="true"></i>Deductions</li><br>
+        <!-- Reports -->
+        <li class="section-title">Reports</li>
+        <li>
+            <a href="dashboard.php">
+                <i class="fas fa-tachometer-alt"></i>
+                <span class="link-text">Dashboard</span>
+            </a>
+        </li>
 
-        <li><a href="logout.php" class="logout-link" onclick="return confirm('Are you sure you want to log out?');"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        <!-- Employee Management -->
+        <li class="section-title">Employee Management</li>
+        <li>
+            <a href="./EmManagement/attendance.php">
+                <i class="fa fa-laptop"></i>
+                <span class="link-text">Attendance</span>
+            </a>
+        </li>
+        <li class="active">
+            <a href="employee-list.php">
+                <i class="fa fa-users"></i>
+                <span class="link-text">Employee List</span>
+            </a>
+        </li>
+        <li>
+            <a href="inactive-employees.php">
+                <i class="fa fa-user-times"></i>
+                <span class="link-text">Inactive Employees</span>
+            </a>
+        </li>
+        <li>
+            <a href="positions.php">
+                <i class="fa fa-briefcase"></i>
+                <span class="link-text">Positions</span>
+            </a>
+        </li>
+
+        <!-- Time Management -->
+        <li class="section-title">Time Management</li>
+        <li>
+            <a href="schedule_management.php">
+                <i class="fas fa-calendar-check"></i>
+                <span class="link-text">Schedules</span>
+            </a>
+        </li>
+        <li>
+            <a href="employee-schedule.php">
+                <i class="fa fa-address-book"></i>
+                <span class="link-text">Employee Schedule</span>
+            </a>
+        </li>
+
+        <!-- Payroll Management -->
+        <li class="section-title">Payroll Management</li>
+        <li>
+            <a href="../PayManagement/payroll.php">
+                <i class="fa fa-envelope"></i>
+                <span class="link-text">Payroll</span>
+            </a>
+        </li>
+        <li>
+            <a href="../PayManagement/cash-advance.php">
+                <i class="fas fa-money-check-alt"></i>
+                <span class="link-text">Cash Advance</span>
+            </a>
+        </li>
+        <li>
+            <a href="../PayManagement/overtime.php">
+                <i class="fas fa-clock"></i>
+                <span class="link-text">Overtime</span>
+            </a>
+        </li>
+        <li>
+            <a href="../PayManagement/taxDeduction.php">
+                <i class="fa fa-minus-square"></i>
+                <span class="link-text">Deductions</span>
+            </a>
+        </li>
+
+        <!-- Logout -->
+        <li class="logout">
+            <a href="../logout.php" onclick="return confirm('Are you sure you want to log out?');">
+                <i class="fas fa-sign-out-alt"></i>
+                <span class="link-text">Logout</span>
+            </a>
+        </li>
+
     </ul>
-</div>
+</aside>
+
 <div class="content">
     <div class="contentBody">
         <div class="top-bar">
@@ -220,5 +289,7 @@ if ($is_day_end) {
         });
     });
 </script>
+
+<script src="../sidebar_function/collapse_sidebar.js"></script>
 </body>
 </html>

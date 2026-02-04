@@ -237,35 +237,109 @@ body {
 <!-- ================= SIDEBAR ================= -->
 <aside class="sidebar" id="sidebar">
 
+    <!-- Sidebar Header -->
     <div class="sidebar-header">
-        <div class="logo-box">
-            <img src="img/letterLogo.png" alt="Logo">
-            <div class="logo-text">LOURD'S Café</div>
-        </div>
+        <a href="../dashboard.php" class="logo-box">
+            <img src="img/letterLogo.png" alt="Company Logo" class="logo-img">
+            <span class="logo-text" src="./dashboard.php">LOURD'S Café</span>
+        </a>
+
         <button class="toggle-btn" onclick="toggleSidebar()">
             <i class="fas fa-bars"></i>
         </button>
     </div>
 
-    <ul>
-        <div class="section-title">Reports</div>
-        <li><a href="dashboard.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+    <ul class="sidebar-menu">
 
-        <div class="section-title">Employee Management</div>
-        <li><a href="#"><i class="fas fa-laptop"></i><span>Attendance</span></a></li>
-        <li><a href="#"><i class="fas fa-users"></i><span>Employee List</span></a></li>
-        <li><a href="#"><i class="fas fa-user-times"></i><span>Inactive Employees</span></a></li>
-        <li><a href="#"><i class="fas fa-briefcase"></i><span>Positions</span></a></li>
+        <!-- Reports -->
+        <li class="section-title">Reports</li>
+        <li>
+            <a href="dashboard.php">
+                <i class="fas fa-tachometer-alt"></i>
+                <span class="link-text">Dashboard</span>
+            </a>
+        </li>
 
-        <div class="section-title">Time Management</div>
-        <li><a href="#"><i class="fas fa-calendar-check"></i><span>Schedules</span></a></li>
-        <li><a href="#"><i class="fas fa-address-book"></i><span>Employee Schedule</span></a></li>
+        <!-- Employee Management -->
+        <li class="section-title">Employee Management</li>
+        <li>
+            <a href="./EmManagement/attendance.php">
+                <i class="fa fa-laptop"></i>
+                <span class="link-text">Attendance</span>
+            </a>
+        </li>
+        <li class="active">
+            <a href="employee-list.php">
+                <i class="fa fa-users"></i>
+                <span class="link-text">Employee List</span>
+            </a>
+        </li>
+        <li>
+            <a href="inactive-employees.php">
+                <i class="fa fa-user-times"></i>
+                <span class="link-text">Inactive Employees</span>
+            </a>
+        </li>
+        <li>
+            <a href="positions.php">
+                <i class="fa fa-briefcase"></i>
+                <span class="link-text">Positions</span>
+            </a>
+        </li>
 
-        <div class="section-title">Payroll Management</div>
-        <li><a href="#"><i class="fas fa-envelope"></i><span>Payroll</span></a></li>
-        <li><a href="#"><i class="fas fa-money-check-alt"></i><span>Cash Advance</span></a></li>
+        <!-- Time Management -->
+        <li class="section-title">Time Management</li>
+        <li>
+            <a href="schedule_management.php">
+                <i class="fas fa-calendar-check"></i>
+                <span class="link-text">Schedules</span>
+            </a>
+        </li>
+        <li>
+            <a href="employee-schedule.php">
+                <i class="fa fa-address-book"></i>
+                <span class="link-text">Employee Schedule</span>
+            </a>
+        </li>
+
+        <!-- Payroll Management -->
+        <li class="section-title">Payroll Management</li>
+        <li>
+            <a href="../PayManagement/payroll.php">
+                <i class="fa fa-envelope"></i>
+                <span class="link-text">Payroll</span>
+            </a>
+        </li>
+        <li>
+            <a href="../PayManagement/cash-advance.php">
+                <i class="fas fa-money-check-alt"></i>
+                <span class="link-text">Cash Advance</span>
+            </a>
+        </li>
+        <li>
+            <a href="../PayManagement/overtime.php">
+                <i class="fas fa-clock"></i>
+                <span class="link-text">Overtime</span>
+            </a>
+        </li>
+        <li>
+            <a href="../PayManagement/taxDeduction.php">
+                <i class="fa fa-minus-square"></i>
+                <span class="link-text">Deductions</span>
+            </a>
+        </li>
+
+        <!-- Logout -->
+        <li class="logout">
+            <a href="../logout.php" onclick="return confirm('Are you sure you want to log out?');">
+                <i class="fas fa-sign-out-alt"></i>
+                <span class="link-text">Logout</span>
+            </a>
+        </li>
+
     </ul>
 </aside>
+
 
 <!-- ================= MAIN ================= -->
 <div class="main" id="main">
@@ -337,6 +411,11 @@ new Chart(document.getElementById('attendanceChart'),{
         ]
     }
 });
+</script>
+<script>
+function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('collapsed');
+}
 </script>
 
 </body>
