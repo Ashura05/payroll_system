@@ -1,0 +1,201 @@
+@font-face {
+    font-family: Montserrat;
+    src: url(Montserrat-VariableFont_wght.ttf);
+}
+
+body {
+    margin: 0;
+    font-family: Montserrat;
+    background-color: #f3feff;
+}
+
+.content {
+    margin-left: 280px;
+    padding: 20px;
+    position: relative;
+}
+.content h1 {
+    position: absolute; 
+    z-index: 1;
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    font-size: 30px;
+    margin: 0; 
+    margin-top: 10px;
+    background-color: #f3feff; 
+    padding: 25px 70px 25px;
+    color:#125a61; 
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 80px;
+    padding: 10px 20px;
+}
+
+.contentBody {
+    margin-left: 30px;
+    padding: 20px;
+}
+
+.employee-form {
+    width: 80%;
+    margin: auto;
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 70px;
+    padding: 50px;
+    margin-bottom: -45px;
+}
+
+.form-column {
+    flex: 1;
+    margin-right: 40px;
+}
+
+.upload-button {
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+    text-decoration: underline;
+    margin-bottom: 10px;
+}
+
+#photo-name {
+    font-size: 14px;
+    color: #555;
+}
+
+input[type="text"], input[type="email"], input[type="file"], select {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+select {
+    background-color: #fff;
+    color: #333;
+    appearance: none; 
+    -webkit-appearance: none; 
+    -moz-appearance: none; 
+    cursor: pointer;
+    position: relative;
+}
+
+.select-wrapper {
+    position: relative;
+}
+
+.select-wrapper::after {
+    content: '▼';
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #333;
+    pointer-events: none;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+select:focus, input[type="text"]:focus, input[type="email"]:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+input[type="submit"] {
+    width: 50%;
+    padding: 15px;
+    margin-top: 10px;
+    margin-left: 300px;
+    margin-bottom: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+
+/* Cancel button styles */
+button.cancel-btn {
+    width: 50%;
+    padding: 15px;
+    margin-top: auto;
+    margin-left: 300px;
+    margin-bottom: 30px;
+    background-color: #f44336; /* Red for cancel */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Hover effect for cancel button */
+button.cancel-btn:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+}
+
+/* Optional: Consistency with focus styles */
+button.cancel-btn:focus {
+    border-color: #f44336;
+    outline: none;
+}
+
+.floating-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #4CAF50; /* Default green for success */
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    display: none; /* Hidden by default */
+    animation: fade-in-out 5s ease-in-out forwards;
+}
+
+.floating-message.error {
+    background-color: #f44336; /* Red for error */
+}
+
+@keyframes fade-in-out {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    10%, 90% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+

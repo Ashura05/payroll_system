@@ -1,0 +1,240 @@
+@font-face {
+    font-family: Montserrat;
+    src: url(Montserrat-VariableFont_wght.ttf);
+}
+
+body {
+    margin: 0;
+    font-family: Montserrat;
+    background-color: #f3feff;
+}
+
+
+.content {
+    margin-left: 280px;
+    padding: 20px;
+    position: relative;
+}
+
+.contentBody {
+    margin-left: 30px;
+    padding: 20px;
+}
+
+.content h1 {
+    position: absolute; 
+    z-index: 1;
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    font-size: 30px;
+    margin: 0; 
+    margin-top: 10px;
+    margin-left: -80px;
+    background-color: transparent; 
+    padding: 25px 150px 25px;
+    color:#125a61; 
+}
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 80px;
+    padding: 10px 20px;
+
+}
+
+.top-bar button, button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.top-bar button:hover {
+    background-color: #218838;
+}
+
+.schedule-button {
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.contentBody {
+    margin-left: 30px;
+    padding: 20px;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table,
+th,
+td {
+    border: 1px solid #7baa9f;
+}
+
+th,
+td {
+    padding: 15px;
+    text-align: center;
+    font-size: 17px;
+}
+
+th {
+    background-color: #ccdada;
+    color: #125a61;
+
+}
+
+td {
+    background-color: #ffffff;
+}
+
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    z-index: 999;
+}
+
+.modal-content {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 120px;
+    margin-bottom: 205px;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+    height: 37%;
+    max-width: 600px;
+    border-radius: 10px;
+}
+
+.close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal form {
+    display: flex;
+    flex-direction: column;
+    gap: -3px;
+}
+
+
+.modal input[type="text"],
+.modal input[type="number"]{
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-left: 7px;
+    margin-bottom: 30px;
+    width: 95%;
+}
+
+.modal input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+    width: auto; 
+}
+
+.modal input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+
+input[type="text"],
+input[type="number"]{
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-left: 7px;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    width: 190px;
+}
+
+.edit-button, .delete-button {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin-left: 10px;
+    margin-right: 10px;
+}   
+
+button:hover {
+    background-color: #45a049;
+}
+
+
+label {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+.edit-button {
+    background-color: #007bff;
+}
+
+.edit-button:hover {
+    background-color: #0056b3;
+}
+
+.delete-button {
+    background-color: #dc3545;
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+}
+

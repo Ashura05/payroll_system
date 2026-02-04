@@ -1,0 +1,233 @@
+@font-face {
+    font-family: Montserrat;
+    src: url(Montserrat-VariableFont_wght.ttf);
+}
+
+body {
+    margin: 0;
+    font-family: Montserrat;
+    background-color: #f3feff;
+}
+
+
+.content {
+    margin-left: 280px;
+    padding: 20px;
+    position: relative;
+}
+
+.contentBody {
+    margin-left: 30px;
+    padding: 20px;
+}
+
+.contentBody h2{
+    z-index: 1;
+    color:#125a61;
+    margin-left: -19px;
+    margin-top: -47px;
+    margin-bottom: 5px;
+    padding: 20px;
+    font-weight: 600;
+    font-size: 22px;
+}
+
+.content h1 {
+    position: absolute; 
+    z-index: 1;
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    font-size: 30px;
+    margin: 0; 
+    margin-top: 10px;
+    background-color: #f3feff; 
+    padding: 25px 70px 25px;
+    color:#125a61; 
+}
+
+.custom-hr {
+    border: 0; /* Removes default border styling */
+    height: 2px; /* Adjust thickness */
+    background-color: #90d0d5; /* Sets a custom color */
+    margin: 20px 0; /* Adds spacing around the line */
+    margin-top: -50px;
+    margin-bottom: 100px;
+}
+
+.top-bar {
+    margin-top: 100px;
+}
+
+.top-bar img{
+    z-index: 1;
+    position: absolute; 
+    top: 15px; 
+    width: 60px;
+    height: 60px;
+    top: 20px;
+    right: 50px;border-radius: 50px;
+    background-color: #4a6a78;
+    border-color: transparent;
+}
+
+.addTopbar {
+    display: flex;
+    justify-content: flex-end; /* Aligns the button to the right */
+    margin-top: -10px;
+}
+
+.addTopbar button,
+#add-employee-btn {
+    background-color: #28a745;
+    color: #ffffff;
+    border: none;
+    padding: 15px 20px;
+    font-weight: bold;
+    text-align: center;
+    display: inline-block;
+    font-size: 17px;
+    letter-spacing: 1px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.addTopbar button:hover,
+#add-employee-btn:hover {
+    background-color: #218838;
+}
+
+
+
+.schedule-button {
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.schedule-button i {
+    margin-right: 10px;
+}
+
+.schedule-button:hover {
+    background-color: #d0d0d0;
+}
+
+table {
+    position: relative;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 50px;
+}
+
+table,
+th,
+td {
+    border: 1px solid #7baa9f;
+}
+
+th,
+td {
+    padding: 15px;
+    text-align: center;
+    font-size: 17px;
+}
+
+th {
+    background-color: #ccdada;
+    color: #125a61;
+
+}
+
+td {
+    background-color: #ffffff;
+}
+
+
+.actions i {
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.actions i:hover {
+    color: #007bff;
+}
+
+
+
+
+
+
+.actions{
+    display: flex;
+    flex-direction: row;
+}
+
+.actions button {
+    color: white;
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    padding: 10px 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin-left: 10px;
+    margin-right: 10px;
+    gap: 5px
+}
+
+a {
+    text-decoration: none;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.edit-button, .reactivate-button {
+    background-color: #007bff;
+}
+
+.edit-button:hover, .reactivate-button:hover {
+    background-color: #0056b3;
+}
+
+.inactive-button, .delete-button {
+    background-color: #dc3545;
+}
+
+.inactive-button:hover, .delete-button:hover {
+    background-color: #c82333;
+}
+
+
+
+
+
+
+
+
+.success-message,
+.error-message {
+    margin-top: 50px;
+    margin-bottom: 30px;
+    padding: 15px;
+    color: #fff;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.success-message {
+    background-color: #4CAF50;
+}
+
+.error-message {
+    background-color: #f44336;
+}

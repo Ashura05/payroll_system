@@ -1,0 +1,172 @@
+@font-face {
+    font-family: Montserrat;
+    src: url(Montserrat-VariableFont_wght.ttf);
+}
+
+body {
+    margin: 0;
+    font-family: Montserrat;
+    background-color: #f3feff;
+}
+
+.content {
+    margin-left: 280px;
+    padding: 20px;
+    position: relative;
+}
+
+.contentBody {
+    margin-left: 30px;
+    padding: 20px;
+}
+
+.content h1 {
+    position: absolute; 
+    z-index: 1;
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    font-size: 30px;
+    margin: 0; 
+    margin-top: 10px;
+    margin-left: -80px;
+    background-color: transparent; 
+    padding: 25px 150px 25px;
+    color:#125a61; 
+}
+
+.contentBody h2{
+    z-index: 1;
+    color:#125a61;
+    margin-left: -19px;
+    margin-top: -48px;
+    margin-bottom: 5px;
+    padding: 20px;
+    font-weight: 600;
+    font-size: 22px;
+}
+.top-bar {
+    margin-top: 100px;
+}
+
+.top-bar img{
+    z-index: 1;
+    position: absolute; 
+    top: 15px; 
+    width: 60px;
+    height: 60px;
+    top: 20px;
+    right: 50px;border-radius: 50px;
+    background-color: #4a6a78;
+    border-color: transparent;
+}
+
+
+
+/* Style for the date input field */
+#date {
+    padding: 10px; /* Add padding for better spacing */
+    font-size: 16px; /* Increase font size */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+    width: 260px; /* Set a fixed width */
+    margin-right: 10px; /* Space between input and button */
+    transition: border-color 0.3s; /* Smooth transition for border color */
+}
+
+/* Change border color on focus */
+#date:focus {
+    border-color: #007bff; /* Change to blue on focus */
+    outline: none; /* Remove default outline */
+}
+
+/* Style for the submit button */
+.button {
+    background-color: #007bff; /* Button background color */
+    color: #fff; /* Text color */
+    padding: 10px 20px; /* Padding for button-like appearance */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    font-weight: bold; /* Bold text */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth hover transition */
+}
+
+/* Change background color on hover */
+.button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+
+.date-navigation {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+    margin-top: 20px; /* Add spacing above */
+}
+
+.date-navigation .button {
+    text-decoration: none; /* Remove underline */
+    background-color: #007bff; /* Button background color */
+    color: #fff; /* Text color */
+    padding: 10px 20px; /* Padding for button-like appearance */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    font-weight: bold; /* Bold text */
+    transition: background-color 0.3s ease; /* Smooth hover transition */
+}
+
+.date-navigation .button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table,
+th,
+td {
+    border: 1px solid #ccc;
+}
+
+th,
+td {
+    padding: 15px;
+    text-align: center;
+}
+
+th {
+    background-color: #f9f9f9;
+}
+
+td {
+    background-color: #ffffff;
+}
+
+.actions i {
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.actions i:hover {
+    color: #007bff;
+}
+
+.status-early {
+    background-color: rgb(140, 255, 140);
+    color: rgb(0, 0, 0);
+}
+
+.status-late {
+    background-color: rgb(253, 204, 113);
+    color: rgb(0, 0, 0);
+}
+
+.status-absent {
+    background-color: rgb(255, 119, 119);
+    color: rgb(0, 0, 0);
+}

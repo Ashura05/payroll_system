@@ -1,0 +1,221 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    background-image: url('../img/lourdscafeBG.png');
+    background-repeat: no-repeat;
+    background-size: 100vw 100vh;
+    margin-left: 300px;
+}
+
+.dashboard-container {
+    background-color: rgb(238, 238, 238);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /*text-align: center;*/
+    width: 600px;
+    height: 580px;
+}
+
+h1 {
+    font-size: 30px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.current-time h3{
+    font-size: 30px;
+    color: #333;
+    margin-bottom: 20px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.current-time p{
+    font-size: 40px;
+    color: #333;
+    margin-bottom: 20px;
+    margin-top: 40px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.schedule{
+    margin: 30px 0;
+
+}
+
+.time-management{
+    margin: 30px 0;
+}
+
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.buttonsManagement {
+    margin-top: 60px;
+    text-decoration: none;
+}
+
+.buttonsManagement button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    text-decoration: none;
+    margin: 10px 0;
+}
+
+.buttonsManagement button:hover {
+    background-color: #0056b3;
+    text-decoration: none;
+}
+
+.button-link {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.button-link:hover {
+    background-color: #0056b3;
+    text-decoration: none;
+}
+
+.employee-info{
+    margin-top: 80px;
+}
+
+input[type="text"]{
+    width: 100%;
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+label {
+    margin-top: 30px;
+    margin-bottom: 5px;
+    margin-left: 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.employee-schedule {
+    background-color: rgb(220, 241, 241);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /*text-align: center;*/
+    margin-left: 700px;
+    margin-top: -450px;
+    width: 600px;
+    height: 450px;
+}
+
+.employee-schedule h4 {
+    font-size: 30px;
+    color: #333;
+    margin-bottom: 45px;
+    margin-top: 0;
+    text-align: center;
+}
+
+.employee-schedule h3 {
+    font-size: 25px;
+    color: #333;margin-top: 40px;
+    margin-bottom: 30px;
+    margin-top: 25px;
+    text-align: center;
+}
+
+.schedM p {
+    font-size: 20px;
+    color: #333;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.timeM p {
+    font-size: 20px;
+    color: #000000;
+    margin-top: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+    .action-buttons {
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .btn {
+        padding: 10px 50px 10px;
+        margin-right: 20px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #4CAF50; 
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn:hover {
+        background-color: #45a049; /* Hover color */
+        transform: translateY(-2px); /* Hover lift effect */
+    }
+
+    .btn:active {
+        background-color: #388e3c; /* Active button color */
+        transform: translateY(0); /* Restore position on click */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Adjust shadow for click */
+    }
+
+    .btn.time-in {
+        background-color: #29be65; /* Time In button color */
+    }
+
+    .btn.time-in:hover {
+        background-color: #24a959; /* Time In hover color */
+    }
+
+    .btn.time-out {
+        background-color: #f39b3d; /* Time Out button color */
+    }
+
+    .btn.time-out:hover {
+        background-color: #e39139; /* Time Out hover color */
+    }

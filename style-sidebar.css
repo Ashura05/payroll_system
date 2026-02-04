@@ -1,0 +1,103 @@
+@font-face {
+    font-family: Montserrat;
+    src: url(Montserrat-VariableFont_wght.ttf);
+}
+
+body {
+    margin: 0;
+    font-family: Montserrat;
+    background-color: #eaeaea;
+}
+
+.sidebar {
+    width: 300px;
+    height: 96.5vh;
+    background-color: #2eae99;
+    z-index: 2;
+    color: white;
+    position: fixed;
+    padding-top: 20px;
+    border-radius: 20px 20px 20px 20px; 
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+
+.sidebar img {
+    display: block;
+    margin-top: auto;
+    margin-left: 30px;
+    margin-bottom: -10px;
+    align-items: center;
+    width: 250px;
+    height: 120px;
+}
+
+.sidebar h2 {
+    color:#ffffff;
+    text-align: center;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.sidebar p {
+    margin-left: 35px;
+    color: #b6dddd;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-left: 35px;
+    padding: 11px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.sidebar ul li:hover{
+    text-decoration: none;
+    color: rgb(67, 140, 146);
+    height: 25px;
+    font-size: 18px;
+}
+
+
+.sidebar ul li a {
+    color: rgb(255, 255, 255); 
+    text-decoration: none; 
+
+}
+
+.sidebar ul li:hover a {
+    color: black; /* Change the link color to black on hover */
+}
+
+
+.sidebar ul li i {
+    margin-right: 10px;
+}
+
+.content h1 {
+    position: absolute; 
+    top: 0; 
+    left: 0;
+    right: 0; 
+    font-size: 24px;
+    margin: 0; 
+    margin-left: 30px;
+    background-color: #ddeef5; 
+    padding: 25px 20px 25px;
+    color:#3b4f5a; 
+}
+
+.sidebar .logout-link{
+    font-size: 20px;
+    color: #08323d; /* Red text */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Bold text */
+}

@@ -1,0 +1,254 @@
+@font-face {
+    font-family: Montserrat;
+    src: url(Montserrat-VariableFont_wght.ttf);
+}
+
+body {
+    margin: 0;
+    font-family: Montserrat;
+    background-color: #f3feff;
+}
+
+.content {
+    margin-left: 280px;
+    padding: 20px;
+    position: relative;
+}
+
+
+.content h1 {
+    position: absolute; 
+    z-index: 1;
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    font-size: 30px;
+    margin: 0; 
+    margin-top: 10px;
+    margin-left: -80px;
+    background-color: transparent; 
+    padding: 25px 150px 25px;
+    color:#125a61; 
+}
+
+.contentBody h2{
+    z-index: 1;
+    color:#125a61;
+    margin-left: -19px;
+    margin-top: -48px;
+    margin-bottom: 5px;
+    padding: 20px;
+    font-weight: 600;
+    font-size: 22px;
+}
+
+.top-bar {
+    margin-top: 100px;
+}
+
+.top-bar img{
+    z-index: 1;
+    position: absolute; 
+    top: 15px; 
+    width: 60px;
+    height: 60px;
+    top: 20px;
+    right: 50px;border-radius: 50px;
+    background-color: #4a6a78;
+    border-color: transparent;
+}
+
+.posButton{
+    display: flex;
+    justify-content: flex-end; /* Aligns the button to the right */
+    margin-top: -10px;
+}
+
+.posButton button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    margin-left: -20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.edit-button, .delete-button {
+    color: white;
+    border: none;
+    padding: 10px 8px;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.edit-button {
+    background-color: #007bff;
+}
+
+.edit-button:hover {
+    background-color: #0056b3;
+}
+
+.delete-button {
+    background-color: #dc3545;
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+}
+
+.contentBody {
+    margin-left: 30px;
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table,
+th,
+td {
+    border: 1px solid #7baa9f;
+}
+
+th,
+td {
+    padding: 15px;
+    text-align: center;
+    font-size: 17px;
+}
+
+th {
+    background-color: #ccdada;
+    color: #125a61;
+
+}
+
+td {
+    background-color: #ffffff;
+}
+
+/* Overlay */
+.overlay {
+    position: fixed;
+    margin-top: -100px;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: none; /* Keep it hidden initially */
+    z-index: 999;
+}
+
+/* Modal Container */
+#schedule-form {
+    display: none; /* Keep it hidden initially */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the modal */
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    max-width: 600px;
+    border-radius: 10px;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Modal Heading */
+#schedule-form label {
+    display: block; /* Ensure labels are on separate lines */
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Input Fields */
+#schedule-form input {
+    display: block; /* Make inputs full-width */
+    width: calc(100% - 20px); /* Adjust for padding */
+    margin: 10px auto 20px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Buttons */
+#schedule-form button {
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background-color 0.3s;
+}
+
+#add-button,
+#update-button {
+    background-color: #28a745;
+    color: white;
+}
+
+#add-button:hover,
+#update-button:hover {
+    background-color: #218838;
+}
+
+button[type="button"] {
+    background-color: #f44336;
+    color: white;
+}
+
+button[type="button"]:hover {
+    background-color: #d32f2f;
+}
+
+/* Close Button */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+

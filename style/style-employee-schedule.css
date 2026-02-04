@@ -1,0 +1,255 @@
+@font-face {
+    font-family: Montserrat;
+    src: url(Montserrat-VariableFont_wght.ttf);
+}
+
+body {
+    margin: 0;
+    font-family: Montserrat;
+    background-color: #f3feff;
+}
+
+.content {
+    margin-left: 280px;
+    padding: 20px;
+    position: relative;
+}
+
+.content h1 {
+    position: absolute; 
+    z-index: 1;
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    font-size: 30px;
+    margin: 0; 
+    margin-top: 10px;
+    margin-left: -80px;
+    background-color: transparent; 
+    padding: 25px 150px 25px;
+    color:#125a61; 
+}
+
+.contentBody h2{
+    z-index: 1;
+    color:#125a61;
+    margin-left: -19px;
+    margin-top: -48px;
+    margin-bottom: 5px;
+    padding: 20px;
+    font-weight: 600;
+    font-size: 22px;
+}
+
+.top-bar {
+    margin-top: 100px;
+}
+
+.top-bar img{
+    z-index: 1;
+    position: absolute; 
+    top: 15px; 
+    width: 60px;
+    height: 60px;
+    top: 20px;
+    right: 50px;border-radius: 50px;
+    background-color: #4a6a78;
+    border-color: transparent;
+}
+
+.contentBody {
+    margin-left: 30px;
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table,
+th,
+td {
+    border: 1px solid #7baa9f;
+}
+
+th,
+td {
+    padding: 15px;
+    text-align: center;
+    font-size: 17px;
+}
+
+th {
+    background-color: #ccdada;
+    color: #125a61;
+
+}
+
+td {
+    background-color: #ffffff;
+}
+.actions a.update-button {
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.actions a.update-button:hover {
+    background-color: #218838;
+}
+
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    z-index: 999;
+}
+
+
+#schedule-form {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 1px solid #888;
+    border-radius: 10px;
+    width: 40%;
+    padding: 30px;
+    z-index: 1000;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+
+#schedule-form button {
+    background-color: #eaeaea;
+    padding: 8px 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#schedule-form button:hover {
+    background-color: #d1d1d1;
+}
+
+#schedule-form select,
+#schedule-form input[type="hidden"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#schedule-form .submit-button,
+#schedule-form button[type="button"] {
+    width: auto;
+    margin: 10px 0;
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#schedule-form .submit-button:hover {
+    background-color: #218838;
+}
+
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+}
+
+
+#schedule-form,
+.overlay {
+    transition: all 0.3s ease-in-out;
+}
+
+.edit-button {
+    color: white;
+    /* White text */
+    border: none;
+    padding: 10px 8px;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    /* Space between icon and text */
+}
+
+
+
+.edit-button {
+    background-color: #007bff;
+    /* Blue background for Edit */
+}
+
+.edit-button:hover {
+    background-color: #0056b3;
+    /* Darker blue on hover */
+}
+
+.floating-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #4CAF50;
+    /* Green background */
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    display: none;
+    /* Hidden by default */
+    animation: fade-in-out 5s ease-in-out forwards;
+}
+
+@keyframes fade-in-out {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    10%,
+    90% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
