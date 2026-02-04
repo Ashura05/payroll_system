@@ -1,0 +1,17 @@
+# Dependencies
+/node_modules/
+/vendor/
+
+# Environment files
+.env
+
+# Logs
+*.log
+
+# OS / Editor files
+.DS_Store
+.idea/
+.vscode/
+
+# XAMPP / local config
+config.php
