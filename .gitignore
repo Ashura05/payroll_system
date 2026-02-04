@@ -19,3 +19,23 @@ config.php
 # Database / credentials
 connection/
 db/
+
+# =========================
+# User Uploads
+# =========================
+uploads/*
+EmManagement/uploads/*
+!uploads/.gitkeep
+!EmManagement/uploads/.gitkeep
+
+# =========================
+# Logs
+# =========================
+*.log
+
+# =========================
+# OS / Editor files
+# =========================
+.DS_Store
+.idea/
+.vscode/
