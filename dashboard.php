@@ -1,8 +1,101 @@
-<?php
+<<?php
 session_start();
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     header("Location: index.php");
     exit();
+}
+
+// Establish connection BEFORE using it
+$servername = "localhost";
+$db_username = "root";
+$db_password = "";
+$dbname = "CoffeeShop";
+$conn = new mysqli($servername, $db_username, $db_password, $dbname);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Now you can safely run queries
+$selected_year = isset($_GET['year']) ? intval($_GET['year']) : date('Y');
+
+// Total Payroll Query
+$total_payroll = 0;
+$result = $conn->query("SELECT SUM(gross - deduction) AS total FROM payroll WHERE YEAR(payroll_date) = $selected_year");
+// ... rest of your code
+if ($payroll_result) {
+    $total_payroll = $payroll_result->fetch_assoc()['total'] ?? 0;
+}
+
+// 2. Total Rendered Hours (Filtered by Selected Year)
+$total_hours = 0;
+$hours_sql = "SELECT SUM(TIMESTAMPDIFF(HOUR, time_in, time_out)) AS total_hrs 
+              FROM employee_time_log 
+              WHERE YEAR(date) = $selected_year AND time_out IS NOT NULL";
+$hours_result = $conn->query($hours_sql);
+if ($hours_result) {
+    $total_hours = $hours_result->fetch_assoc()['total_hrs'] ?? 0;
+}
+
+// --- TOP CARDS (Current Day / Today) ---
+
+// Active Employees
+$employee_count = ($r = $conn->query("SELECT COUNT(*) AS cnt FROM employees WHERE status='active'")) ? $r->fetch_assoc()['cnt'] : 0;
+
+// Early Today (Logic synced with attendance.php - uses specific employee shifts)
+$early_count = ($r = $conn->query("SELECT COUNT(*) AS cnt FROM employee_time_log t JOIN employee_schedule s ON t.employee_id = s.employee_id WHERE t.date = CURDATE() AND t.time_in < s.shift_start")) ? $r->fetch_assoc()['cnt'] : 0;
+
+// On Time Today (Fixed 08:00 AM threshold as per your code)
+$on_time_count = ($r = $conn->query("SELECT COUNT(*) AS cnt FROM attendance WHERE TIME(time_in) <= '08:00:00' AND DATE(date)=CURDATE()")) ? $r->fetch_assoc()['cnt'] : 0;
+
+// Late Today (Logic synced with attendance.php)
+$late_count = ($r = $conn->query("SELECT COUNT(*) AS cnt FROM employee_time_log t JOIN employee_schedule s ON t.employee_id = s.employee_id WHERE t.date = CURDATE() AND t.time_in > s.shift_start")) ? $r->fetch_assoc()['cnt'] : 0;
+
+// Absent Today
+$absent_count = ($r = $conn->query("SELECT COUNT(*) AS cnt FROM employees WHERE status='active' AND employee_id NOT IN (SELECT employee_id FROM attendance WHERE DATE(date)=CURDATE())")) ? $r->fetch_assoc()['cnt'] : 0;
+
+
+// --- SUMMARY CARDS (Yearly Totals) ---
+
+// FIXED: Total Payroll for the Selected Year using 'payroll_date'
+// --- FIXED PAYROLL SECTION ---
+$total_payroll = 0;
+$selected_year = isset($_GET['year']) ? intval($_GET['year']) : date('Y');
+
+// 1. Assign the query result to the variable $payroll_result
+$payroll_result = $conn->query("SELECT SUM(gross - deduction) AS total FROM payroll WHERE YEAR(payroll_date) = $selected_year");
+
+// 2. Now you can safely check if it is defined and has data
+if ($payroll_result) {
+    $row = $payroll_result->fetch_assoc();
+    $total_payroll = $row['total'] ?? 0;
+} else {
+    // Optional: Log error if the query fails
+    error_log("Payroll Query Failed: " . $conn->error);
+}
+
+$inactive_count = ($r = $conn->query("SELECT COUNT(*) AS cnt FROM inactive_employees")) ? $r->fetch_assoc()['cnt'] : 0;
+$positions_count = ($r = $conn->query("SELECT COUNT(*) AS cnt FROM positions")) ? $r->fetch_assoc()['cnt'] : 0;
+$schedules_count = ($r = $conn->query("SELECT COUNT(*) AS cnt FROM schedules")) ? $r->fetch_assoc()['cnt'] : 0;
+
+
+// --- CHART DATA (Filtered by $selected_year) ---
+$attendance_data = []; 
+$early_data = [];
+$late_data = [];
+
+for ($m = 1; $m <= 12; $m++) {
+    // Early
+    $e = $conn->query("SELECT COUNT(*) AS cnt FROM employee_time_log t JOIN employee_schedule s ON t.employee_id = s.employee_id WHERE MONTH(t.date)=$m AND YEAR(t.date)=$selected_year AND t.time_in < s.shift_start");
+    $early_data[] = $e->fetch_assoc()['cnt'];
+
+    // On Time
+    $o = $conn->query("SELECT COUNT(*) AS cnt FROM attendance WHERE MONTH(date)=$m AND YEAR(date)=$selected_year AND TIME(time_in) <= '08:00:00'");
+    $attendance_data[] = $o->fetch_assoc()['cnt'];
+
+    // Late
+    $l = $conn->query("SELECT COUNT(*) AS cnt FROM attendance WHERE MONTH(date)=$m AND YEAR(date)=$selected_year AND TIME(time_in) > '08:00:00'");
+    $late_data[] = $l->fetch_assoc()['cnt'];
 }
 ?>
 
@@ -42,6 +135,7 @@ body {
     width: 64px;
 }
 
+
 /* ===== SIDEBAR HEADER ===== */
 .sidebar-header {
     display: flex;
@@ -57,20 +151,20 @@ body {
     align-items: center;
     gap: 10px;
     overflow: hidden;
+    text-decoration: none;
 }
 
 .logo-box img {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
+    display: none;
 }
 
 /* logo text */
 .logo-text {
-    font-size: 18px;
+    font-size: 24px;
     font-weight: bold;
     white-space: nowrap;
     transition: opacity .2s ease;
+    color: #fff;
 }
 
 /* hide logo text only */
@@ -137,11 +231,13 @@ body {
 .main {
     margin-left: 260px;
     padding: 25px;
-    transition: margin-left .3s ease;
+    transition: margin-left .3s ease, width .3s ease;
+    width: calc(100% - 260px);
 }
 
 .main.collapsed {
-    margin-left: 72px;
+    margin-left: 64px;
+    width: calc(100% - 64px);
 }
 
 /* ================= TOP BAR ================= */
@@ -269,19 +365,19 @@ body {
             </a>
         </li>
         <li class="active">
-            <a href="employee-list.php">
+            <a href="./EmManagement/employee-list.php">
                 <i class="fa fa-users"></i>
                 <span class="link-text">Employee List</span>
             </a>
         </li>
         <li>
-            <a href="inactive-employees.php">
+            <a href="./EmManagement/inactive-employees.php">
                 <i class="fa fa-user-times"></i>
                 <span class="link-text">Inactive Employees</span>
             </a>
         </li>
         <li>
-            <a href="positions.php">
+            <a href="./EmManagement/positions.php">
                 <i class="fa fa-briefcase"></i>
                 <span class="link-text">Positions</span>
             </a>
@@ -290,13 +386,13 @@ body {
         <!-- Time Management -->
         <li class="section-title">Time Management</li>
         <li>
-            <a href="schedule_management.php">
+            <a href="./EmManagement/schedule_management.php">
                 <i class="fas fa-calendar-check"></i>
                 <span class="link-text">Schedules</span>
             </a>
         </li>
         <li>
-            <a href="employee-schedule.php">
+            <a href="./EmManagement/employee-schedule.php">
                 <i class="fa fa-address-book"></i>
                 <span class="link-text">Employee Schedule</span>
             </a>
@@ -305,7 +401,7 @@ body {
         <!-- Payroll Management -->
         <li class="section-title">Payroll Management</li>
         <li>
-            <a href="../PayManagement/payroll.php">
+            <a href="./PayManagement/payroll.php">
                 <i class="fa fa-envelope"></i>
                 <span class="link-text">Payroll</span>
             </a>
@@ -350,10 +446,11 @@ body {
     </div>
 
     <div class="cards">
-        <div class="card"><i class="fas fa-users"></i><h2>7</h2><p>Employees</p></div>
-        <div class="card"><i class="fas fa-clock"></i><h2>6</h2><p>On Time</p></div>
-        <div class="card"><i class="fas fa-hourglass-half"></i><h2>1</h2><p>Late</p></div>
-        <div class="card"><i class="fas fa-minus-circle"></i><h2>0</h2><p>Absent</p></div>
+        <div class="card"><i class="fas fa-users"></i><h2><?= $employee_count ?></h2><p>Employees</p></div>
+        <div class="card"><i class="fas fa-arrow-up"></i><h2><?= $early_count ?></h2><p>Early</p></div>
+        <div class="card"><i class="fas fa-clock"></i><h2><?= $on_time_count ?></h2><p>On Time</p></div>
+        <div class="card"><i class="fas fa-hourglass-half"></i><h2><?= $late_count ?></h2><p>Late</p></div>
+        <div class="card"><i class="fas fa-minus-circle"></i><h2><?= $absent_count ?></h2><p>Absent</p></div>
     </div>
 
     <h2>Payroll Overview</h2>
@@ -361,38 +458,41 @@ body {
     <div class="summary-cards">
         <div class="summary-card">
             <div class="icon-box green"><i class="fas fa-wallet"></i></div>
-            <div><p>Total Payroll</p><h3>₱125,430</h3></div>
+            <div><p>Total Payroll</p><h3>₱<?= number_format($total_payroll, 2) ?></h3></div>
         </div>
         <div class="summary-card">
             <div class="icon-box red"><i class="fas fa-user-slash"></i></div>
-            <div><p>Inactive Employees</p><h3>4</h3></div>
+            <div><p>Inactive Employees</p><h3><?= $inactive_count ?></h3></div>
         </div>
         <div class="summary-card">
             <div class="icon-box blue"><i class="fas fa-briefcase"></i></div>
-            <div><p>Positions</p><h3>8</h3></div>
+            <div><p>Positions</p><h3><?= $positions_count ?></h3></div>
         </div>
         <div class="summary-card">
             <div class="icon-box teal"><i class="fas fa-calendar-alt"></i></div>
-            <div><p>Schedules</p><h3>6</h3></div>
+            <div><p>Schedules</p><h3><?= $schedules_count ?></h3></div>
         </div>
     </div>
 
-    <div class="year-filter">
-        <div class="year-box">
-            <i class="fas fa-calendar"></i>
-            <select>
-                <option>2024</option>
-                <option selected>2025</option>
-                <option>2026</option>
-            </select>
-        </div>
+<div class="year-filter">
+    <div class="year-box">
+        <i class="fas fa-calendar"></i>
+     <select id="yearSelect" onchange="window.location.href='dashboard.php?year='+this.value">
+    <?php 
+    for($y = date('Y')-2; $y <= date('Y')+1; $y++): ?>
+        <option value="<?= $y ?>" <?= ($y == $selected_year) ? 'selected' : '' ?>><?= $y ?></option>
+    <?php endfor; ?>
+</select>
     </div>
+</div>
 
     <div class="chart-box">
         <canvas id="attendanceChart"></canvas>
     </div>
 
 </div>
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
@@ -401,22 +501,28 @@ function toggleSidebar(){
     document.getElementById('main').classList.toggle('collapsed');
 }
 
+const attendanceData = <?= json_encode($attendance_data) ?>;
+const earlyData = <?= json_encode($early_data) ?>;
+const lateData = <?= json_encode($late_data) ?>;
+
 new Chart(document.getElementById('attendanceChart'),{
     type:'bar',
     data:{
         labels:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
         datasets:[
-            {label:'On Time',data:[4,5,6,7,6,5,6,7,6,5,6,7],backgroundColor:'green'},
-            {label:'Late',data:[1,1,0,1,0,1,0,1,0,1,0,1],backgroundColor:'gray'}
+            {label:'Early', data:earlyData, backgroundColor:'#3f51b5'}, // Blue for Early
+            {label:'On Time', data:attendanceData, backgroundColor:'#4caf50'}, // Green for On Time
+            {label:'Late', data:lateData, backgroundColor:'#f44336'} // Red for Late
         ]
     }
 });
-</script>
-<script>
-function toggleSidebar() {
-    document.getElementById('sidebar').classList.toggle('collapsed');
+
+function changeYear(year) {
+    // Reloads the page with the year as a query parameter
+    window.location.href = 'dashboard.php?year=' + year;
 }
 </script>
 
 </body>
 </html>
+
