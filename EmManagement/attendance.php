@@ -3,7 +3,7 @@ session_start();
 date_default_timezone_set('Asia/Manila');
 
 // Ensure the database connection file defines the $conn variable
-require_once '../db/db_connection.php';
+
 
 // Check if the user is logged in as an admin
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
